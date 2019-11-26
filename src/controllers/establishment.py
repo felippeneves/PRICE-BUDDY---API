@@ -31,7 +31,7 @@ class EstablishmentController:
             "	on TB_ADDRESS.ADDRESS_ID = TB_ESTABLISHMENT.ADDRESS_ID                                                                                          " +
             "	order by distance                                                                                                                               "
         , latitude, longitude).fetchall()
-        pathPhotos = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'photos', 'establishments'))
+        pathPhotos = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'photos', 'establishments', 'small'))
 
         listEstablishments = list()
 

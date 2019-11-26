@@ -20,5 +20,4 @@ class ProductUniqueSchema(Schema):
     establishmentLatitude = fields.String()
     establishmentLongitude = fields.String()
     establishmentOperatingHours = fields.String()
-    establishmentFlgOpen = fields.String()
     photo = fields.String()

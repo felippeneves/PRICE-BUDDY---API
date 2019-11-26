@@ -17,28 +17,6 @@ class ProductUniqueController:
             cursor = connection.cursor()
 
             row = cursor.execute(
-            # "	select  p.PRODUCT_ID id,											" +
-            # "			p.PRODUCT_CODE code,                                        " +
-            # "			p.PRODUCT_NAME name,                                        " +
-            # "			p.PRODUCT_DESCRIPTION description,                          " +
-            # "			p.PRODUCT_WEIGHT weight,                                    " +
-            # "			e.ESTABLISHMENT_ID establishmentID,                         " +
-            # "			e.ESTABLISHMENT_NAME establishmentName,                     " +
-            # "			e.ESTABLISHMENT_PHONE establishmentPhone,                   " +
-            # "			a.ADDRESS_ADDRESS_NAME establishmentAddress,                " +
-            # "			a.ADDRESS_NUMBER establishmentNumber,                       " +
-            # "			a.ADDRESS_COMPLEMENT establishmentComplement,               " +
-            # "			a.ADDRESS_NEIGHBORHOOD establishmentNeighborhood,           " +
-            # "			a.ADDRESS_CITY establishmentCity,                           " +
-            # "			a.ADDRESS_STATE establishmentState,                         " +
-            # "			a.ADDRESS_COUNTRY establishmentCountry,                     " +
-            # "			a.ADDRESS_LATITUDE establishmentLatitude,                   " +
-            # "			a.ADDRESS_LONGITUDE establishmentLongitude                  " +
-            # "	from TB_PRODUCT p, TB_ESTABLISHMENT e                               " +
-            # "	join TB_ADDRESS a                                                   " +
-            # "	on a.ADDRESS_ID = e.ADDRESS_ID                                      " +
-            # "	where p.PRODUCT_ID = ?                                              " +
-            # "	and e.ESTABLISHMENT_ID = ?                                          ",
             "	select  p.PRODUCT_ID id,											" +
             "			p.PRODUCT_CODE code,                                        " +
             "			p.PRODUCT_NAME name,                                        " +
@@ -48,6 +26,7 @@ class ProductUniqueController:
             "			e.ESTABLISHMENT_ID establishmentID,                         " +
             "			e.ESTABLISHMENT_NAME establishmentName,                     " +
             "			e.ESTABLISHMENT_PHONE establishmentPhone,                   " +
+            "           e.ESTABLISHMENT_OPERATING_HOURS establishmentOperatingHours,"
             "			a.ADDRESS_ADDRESS_NAME establishmentAddress,                " +
             "			a.ADDRESS_NUMBER establishmentNumber,                       " +
             "			a.ADDRESS_COMPLEMENT establishmentComplement,               " +
@@ -72,23 +51,6 @@ class ProductUniqueController:
 
             if row and len(row) > 0:
                 schema = ProductUniqueSchema()
-
-                # rows = cursor.execute(
-                #     "	select  d.DAYWEEK_NAME,					" +
-                #     "			d.DAYWEEK_SHORT_NAME,           " +
-                #     "			o.OPERATION_START_DATE,         " +
-                #     "			o.OPERATION_FINAL_DATE          " +
-                #     "	from TB_OPERATION o                     " +
-                #     "	join TB_DAY_WEEK d                      " +
-                #     "	on d.DAYWEEK_ID = o.DAYWEEK_ID          " +
-                #     "	where o.ESTABLISHMENT_ID = ?            ",
-                #     establishmentID).fetchall()
-                #
-                # days = ''
-                # establishmentFlgOpen = ''
-                #
-                # for row in rows:
-                #
 
                 image = os.path.join(pathPhotos, row.id + '.png')
                 try:
@@ -117,8 +79,7 @@ class ProductUniqueController:
                         establishmentCountry = row.establishmentCountry,
                         establishmentLatitude = row.establishmentLatitude,
                         establishmentLongitude = row.establishmentLongitude,
-                        # establishmentOperatingHours = fields.String(),
-                        # establishmentFlgOpen = fields.String(),
+                        establishmentOperatingHours = row.establishmentOperatingHours,
                         photo=imgStr
                     )
                 )

@@ -37,7 +37,7 @@ class ProductController:
                     "	on e.ESTABLISHMENT_ID = pe.ESTABLISHMENT_ID                                                                             " +
                     "	join TB_ADDRESS a                                                                                                       " +
                     "	on a.ADDRESS_ID = e.ADDRESS_ID                                                                                          " +
-                    "	order by establishmentDistance																							"
+                    "	order by price																							                "
                     , latitude, longitude, establishmentID).fetchall()
             else:
                 productInfoLike = '%' + productInfo + '%'
@@ -65,7 +65,9 @@ class ProductController:
                     "	order by establishmentDistance																							"
                     , latitude, longitude, productInfoLike).fetchall()
 
-                if (rows is None) or (rows and len(rows) == 0):
+                if (rows is None) or (len(rows) == 0):
+
+
                     rows = cursor.execute(
                         "	select p.PRODUCT_ID id,																				                    " +
                         "		p.PRODUCT_CODE code,                                                                                                " +
