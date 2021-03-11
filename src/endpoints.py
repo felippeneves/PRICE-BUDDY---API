@@ -19,3 +19,4 @@ api.add_resource(Product, '/product')
 # api.add_resource(ProductEstablishment, '/product_establishment')
 api.add_resource(ProductUnique, '/product_unique')
 api.add_resource(EstablishmentUnique, '/establishment_unique')
+
