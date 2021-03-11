@@ -1,0 +1,15 @@
+import pyodbc
+import json
+import os
+
+def config_connection():
+    return pyodbc.connect(
+        "Driver={};"
+        "Server=;"
+        "Database=;"
+        "uid=;"
+        "pwd="
+    )
+
+
+
