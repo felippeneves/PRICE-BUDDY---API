@@ -10,6 +10,3 @@ def config_connection():
         "uid=lfmont;"
         "pwd=pass@word1"
     )
-
-
-
